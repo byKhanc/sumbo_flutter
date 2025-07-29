@@ -1,16 +1,63 @@
-# sumbo_flutter
+# sumbo_flutter-BackUp
 
-A new Flutter project.
+## 숨보 Sumbo - 보물 찾기 앱
 
-## Getting Started
+Flutter로 개발된 위치 기반 보물 찾기 애플리케이션입니다.
 
-This project is a starting point for a Flutter application.
+## 주요 기능
 
-A few resources to get you started if this is your first Flutter project:
+- 🗺️ **실시간 지도**: 카카오맵 API를 활용한 위치 기반 서비스
+- 🎯 **미션 시스템**: 다양한 카테고리의 미션과 보상
+- 💎 **보물 수집**: 발견한 보물들을 관리하고 확인
+- 📍 **추천 시스템**: 카테고리별 맞춤형 보물 추천
+- 🔄 **백업 시스템**: 자동/수동 데이터 백업 및 복구
+- 🎨 **통일된 UI**: 홈화면과 동일한 디자인 시스템
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 기술 스택
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Frontend**: Flutter
+- **Backend**: REST API
+- **지도**: 카카오맵 API
+- **데이터**: JSON 기반 로컬 데이터
+- **백업**: SharedPreferences + 자동 백업 시스템
+
+## 데이터 현황
+
+| 카테고리 | 데이터 수 | 상태 |
+|---------|----------|------|
+| 맛집 | 30개 | ✅ 완료 |
+| 미션 | 10개 | ✅ 완료 |
+| 보물 | 5개 | ✅ 완료 |
+| 백업 시스템 | 구현됨 | ✅ 완료 |
+
+## 설치 및 실행
+
+```bash
+# 의존성 설치
+flutter pub get
+
+# 앱 실행
+flutter run
+```
+
+## 백업 시스템
+
+- **자동 백업**: 24시간마다 자동으로 데이터 백업
+- **수동 백업**: 설정에서 언제든 백업 생성 가능
+- **백업 복구**: 저장된 백업으로 데이터 복구
+- **백업 정보**: 마지막 백업 시간, 데이터 크기 등 확인
+
+## 개발 환경
+
+- Flutter SDK: 3.4.4+
+- Dart SDK: 3.4.4+
+- Android Studio / VS Code
+- Git (버전 관리)
+
+## 라이선스
+
+MIT License
+
+## 제작
+
+숨보팀 (Sumbo Team)
