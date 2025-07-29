@@ -1,0 +1,102 @@
+[
+  {
+    "id": "mission_1",
+    "title": "맛집 탐방하기",
+    "description": "주변의 맛집을 찾아 방문해보세요!",
+    "points": 50,
+    "category": "맛집",
+    "completed": false,
+    "icon": "restaurant",
+    "color": "orange"
+  },
+  {
+    "id": "mission_2",
+    "title": "문화 시설 방문하기",
+    "description": "박물관이나 미술관을 방문해보세요!",
+    "points": 100,
+    "category": "문화",
+    "completed": false,
+    "icon": "museum",
+    "color": "purple"
+  },
+  {
+    "id": "mission_3",
+    "title": "공원 산책하기",
+    "description": "아름다운 공원에서 산책을 즐겨보세요!",
+    "points": 30,
+    "category": "자연",
+    "completed": false,
+    "icon": "park",
+    "color": "green"
+  },
+  {
+    "id": "mission_4",
+    "title": "쇼핑몰 방문하기",
+    "description": "현대적인 쇼핑몰에서 쇼핑을 즐겨보세요!",
+    "points": 60,
+    "category": "쇼핑",
+    "completed": false,
+    "icon": "shopping_bag",
+    "color": "blue"
+  },
+  {
+    "id": "mission_5",
+    "title": "전통 시장 탐방",
+    "description": "전통 시장에서 현지 문화를 체험해보세요!",
+    "points": 40,
+    "category": "시장",
+    "completed": false,
+    "icon": "store",
+    "color": "orange"
+  },
+  {
+    "id": "mission_6",
+    "title": "카페 투어",
+    "description": "독특한 카페들을 찾아 방문해보세요!",
+    "points": 35,
+    "category": "카페",
+    "completed": false,
+    "icon": "coffee",
+    "color": "brown"
+  },
+  {
+    "id": "mission_7",
+    "title": "야외 활동",
+    "description": "야외에서 다양한 활동을 즐겨보세요!",
+    "points": 45,
+    "category": "자연",
+    "completed": false,
+    "icon": "hiking",
+    "color": "green"
+  },
+  {
+    "id": "mission_8",
+    "title": "예술 공연 관람",
+    "description": "음악회나 연극을 관람해보세요!",
+    "points": 80,
+    "category": "문화",
+    "completed": false,
+    "icon": "theater_comedy",
+    "color": "purple"
+  },
+  {
+    "id": "mission_9",
+    "title": "디저트 탐방",
+    "description": "맛있는 디저트를 찾아 먹어보세요!",
+    "points": 25,
+    "category": "디저트",
+    "completed": false,
+    "icon": "cake",
+    "color": "pink"
+  },
+  {
+    "id": "mission_10",
+    "title": "역사 탐방",
+    "description": "역사적인 장소를 방문해보세요!",
+    "points": 70,
+    "category": "문화",
+    "completed": false,
+    "icon": "history_edu",
+    "color": "purple"
+  }
+] 
