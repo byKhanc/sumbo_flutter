@@ -122,9 +122,9 @@ class TreasureListDialog extends StatelessWidget {
                       const SizedBox(height: 16),
 
                       // 보물 설명
-                      Text(
+                      const Text(
                         '설명',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.black87,
@@ -144,9 +144,9 @@ class TreasureListDialog extends StatelessWidget {
                       const SizedBox(height: 16),
 
                       // 태그들
-                      Text(
+                      const Text(
                         '태그',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.black87,
@@ -184,9 +184,9 @@ class TreasureListDialog extends StatelessWidget {
                       const SizedBox(height: 16),
 
                                              // 위치 정보
-                       Text(
+                       const Text(
                          '위치',
-                         style: const TextStyle(
+                         style: TextStyle(
                            fontSize: 16,
                            fontWeight: FontWeight.w600,
                            color: Colors.black87,

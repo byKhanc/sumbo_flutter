@@ -267,7 +267,7 @@ class _AdminPageState extends State<AdminPage> {
               ],
             ),
             const SizedBox(height: 16),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: StatCard(
@@ -276,7 +276,7 @@ class _AdminPageState extends State<AdminPage> {
                     icon: Icons.people,
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 16),
                 Expanded(
                   child: StatCard(
                     label: '추가 예정',
@@ -284,7 +284,7 @@ class _AdminPageState extends State<AdminPage> {
                     icon: Icons.add_circle,
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 16),
                 Expanded(
                   child: StatCard(label: '추가 예정', value: '', icon: Icons.star),
                 ),
@@ -325,11 +325,11 @@ class _AdminPageState extends State<AdminPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  const Row(
                     children: [
-                      const Icon(Icons.category, color: Color(0xFF2563eb)),
-                      const SizedBox(width: 8),
-                      const Text(
+                      Icon(Icons.category, color: Color(0xFF2563eb)),
+                      SizedBox(width: 8),
+                      Text(
                         '보물 카테고리 설정',
                         style: TextStyle(
                           fontSize: 18,

@@ -163,7 +163,7 @@ class _MissionPageState extends State<MissionPage> {
                       const SizedBox(height: 20),
                     ],
                   );
-                }).toList(),
+                }),
               ],
             ),
     );

@@ -307,7 +307,7 @@ class TreasureDetailPage extends StatelessWidget {
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Icon(Icons.location_on, color: Colors.grey),
+                      const Icon(Icons.location_on, color: Colors.grey),
                       const SizedBox(width: 8),
                       Text(
                         treasure['location'],
@@ -319,7 +319,7 @@ class TreasureDetailPage extends StatelessWidget {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(Icons.star, color: Colors.amber),
+                      const Icon(Icons.star, color: Colors.amber),
                       const SizedBox(width: 8),
                       Text(
                         '${treasure['rating']}',

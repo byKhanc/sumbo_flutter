@@ -330,7 +330,7 @@ class MissionDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('미션 상세')),
+      appBar: AppBar(title: const Text('미션 상세')),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(

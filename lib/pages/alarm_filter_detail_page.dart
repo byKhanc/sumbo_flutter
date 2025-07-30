@@ -74,9 +74,9 @@ class _AlarmFilterDetailPageState extends State<AlarmFilterDetailPage> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text(
+                const Text(
                   '알림을 받고 싶은 세부\n카테고리를 선택하세요.',
-                  style: const TextStyle(fontSize: 14, color: Colors.grey),
+                  style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
               ],
             ),

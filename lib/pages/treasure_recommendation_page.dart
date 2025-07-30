@@ -153,7 +153,7 @@ class _TreasureRecommendationPageState extends State<TreasureRecommendationPage>
             const SizedBox(height: 8),
             Row(
               children: [
-                Icon(Icons.star, color: Colors.amber, size: 16),
+                const Icon(Icons.star, color: Colors.amber, size: 16),
                 const SizedBox(width: 4),
                 Text('${recommendation['rating']}'),
                 const SizedBox(width: 16),
@@ -235,7 +235,7 @@ class _RecommendationCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.star, color: Colors.amber, size: 12),
+                  const Icon(Icons.star, color: Colors.amber, size: 12),
                   const SizedBox(width: 2),
                   Text(
                     '${recommendation['rating']}',

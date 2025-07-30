@@ -361,10 +361,10 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             child: Row(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 32,
-                  backgroundColor: const Color(0xFF2563EB),
-                  child: const Icon(
+                  backgroundColor: Color(0xFF2563EB),
+                  child: Icon(
                     Icons.person,
                     color: Colors.white,
                     size: 36,
@@ -736,9 +736,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ],
             ),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text('앱 정보', style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: 12),
                 Text('버전: 1.0.0'),
@@ -835,14 +835,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   MaterialPageRoute(builder: (_) => const FeedbackPage()),
                 );
               },
-              child: Row(
+              child: const Row(
                 children: [
-                  const Icon(Icons.email, color: Color(0xFF2563EB)),
-                  const SizedBox(width: 16),
-                  const Expanded(
+                  Icon(Icons.email, color: Color(0xFF2563EB)),
+                  SizedBox(width: 16),
+                  Expanded(
                     child: Text('문의/피드백 보내기', style: TextStyle(fontSize: 16)),
                   ),
-                  const Icon(
+                  Icon(
                     Icons.arrow_forward_ios,
                     size: 18,
                     color: Color(0xFF2563EB),
@@ -909,7 +909,7 @@ class _CustomSwitchCard extends StatelessWidget {
                   Container(
                     width: 24,
                     height: 24,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
                     ),

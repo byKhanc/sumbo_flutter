@@ -12,7 +12,7 @@ class _MapPageMobileState extends State<MapPageMobile> {
   static const LatLng _center = LatLng(37.5665, 126.9780); // 서울 시청
   late GoogleMapController _mapController;
   final Set<Marker> _markers = {
-    Marker(
+    const Marker(
       markerId: MarkerId('center'),
       position: _center,
       infoWindow: InfoWindow(title: '서울 시청'),

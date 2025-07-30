@@ -16,7 +16,7 @@ class MainDrawer extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(color: Colors.blue),
               child: Column(
                 children: [
@@ -42,75 +42,75 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('홈'),
+              leading: const Icon(Icons.home),
+              title: const Text('홈'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.map),
-              title: Text('보물지도'),
+              leading: const Icon(Icons.map),
+              title: const Text('보물지도'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
+                  MaterialPageRoute(builder: (context) => const MapPage()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.assignment),
-              title: Text('미션'),
+              leading: const Icon(Icons.assignment),
+              title: const Text('미션'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => MissionPage()),
+                  MaterialPageRoute(builder: (context) => const MissionPage()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.star),
-              title: Text('내 보물'),
+              leading: const Icon(Icons.star),
+              title: const Text('내 보물'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => MyTreasuresPage()),
+                  MaterialPageRoute(builder: (context) => const MyTreasuresPage()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.recommend),
-              title: Text('보물 추천'),
+              leading: const Icon(Icons.recommend),
+              title: const Text('보물 추천'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TreasureRecommendationPage(),
+                    builder: (context) => const TreasureRecommendationPage(),
                   ),
                 );
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('설정'),
+              leading: const Icon(Icons.settings),
+              title: const Text('설정'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                  MaterialPageRoute(builder: (context) => const SettingsPage()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.admin_panel_settings),
-              title: Text('관리자'),
+              leading: const Icon(Icons.admin_panel_settings),
+              title: const Text('관리자'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => AdminPage()),
+                  MaterialPageRoute(builder: (context) => const AdminPage()),
                 );
               },
             ),

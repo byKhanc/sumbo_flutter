@@ -51,7 +51,7 @@ class RestaurantCard extends StatelessWidget {
                         const SizedBox(height: 4),
                         Row(
                           children: [
-                            Icon(Icons.star, size: 16, color: AppColors.rating),
+                            const Icon(Icons.star, size: 16, color: AppColors.rating),
                             const SizedBox(width: 4),
                             Text(
                               restaurant.rating.toStringAsFixed(1),
@@ -102,7 +102,7 @@ class RestaurantCard extends StatelessWidget {
               if (showDetails) ...[
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.location_on,
                       size: 16,
                       color: AppColors.textSecondary,
@@ -128,7 +128,7 @@ class RestaurantCard extends StatelessWidget {
                 Row(
                   children: [
                     if (restaurant.phone.isNotEmpty) ...[
-                      Icon(
+                      const Icon(
                         Icons.phone,
                         size: 14,
                         color: AppColors.textTertiary,
@@ -144,7 +144,7 @@ class RestaurantCard extends StatelessWidget {
                       const SizedBox(width: 16),
                     ],
                     if (restaurant.openingHours.isNotEmpty) ...[
-                      Icon(
+                      const Icon(
                         Icons.access_time,
                         size: 14,
                         color: AppColors.textTertiary,
@@ -203,7 +203,7 @@ class RestaurantCard extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.emoji_events,
                         size: 16,
                         color: AppColors.mission,
