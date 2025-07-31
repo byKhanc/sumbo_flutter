@@ -42,7 +42,7 @@ class _KakaoMapWidgetState extends State<KakaoMapWidget> {
       return const Center(child: CircularProgressIndicator());
     }
 
-    // 카카오맵 JavaScript API를 사용하여 웹뷰로 표시
+    // 웹에서 카카오맵 표시
     return Container(
       width: double.infinity,
       height: 400,
@@ -58,70 +58,40 @@ class _KakaoMapWidgetState extends State<KakaoMapWidget> {
   }
 
   Widget _buildKakaoMapWebView() {
-    // 카카오맵 JavaScript API를 사용한 HTML
-    final htmlContent =
-        '''
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="utf-8">
-        <title>카카오맵</title>
-        <style>
-          #map { width: 100%; height: 100%; }
-        </style>
-      </head>
-      <body>
-        <div id="map"></div>
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4de2f985cfcf673dc650623230990ccc&libraries=services"></script>
-        <script>
-          var mapContainer = document.getElementById('map');
-          var mapOption = {
-            center: new kakao.maps.LatLng($_latitude, $_longitude),
-            level: $_zoom
-          };
-          
-          var map = new kakao.maps.Map(mapContainer, mapOption);
-          
-          // 음식점 마커 추가
-          var restaurants = $_restaurants;
-          restaurants.forEach(function(restaurant) {
-            var marker = new kakao.maps.Marker({
-              position: new kakao.maps.LatLng(restaurant.latitude, restaurant.longitude)
-            });
-            
-            marker.setMap(map);
-            
-            // 인포윈도우 추가
-            var infowindow = new kakao.maps.InfoWindow({
-              content: '<div style="padding:5px;font-size:12px;">' + restaurant.name + '</div>'
-            });
-            
-            kakao.maps.event.addListener(marker, 'click', function() {
-              infowindow.open(map, marker);
-            });
-          });
-        </script>
-      </body>
-      </html>
-    ''';
-
-    // 웹뷰로 카카오맵 표시
+    // 웹에서 카카오맵 표시 (간단한 버전)
     return Container(
       color: Colors.grey.shade200,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.map, size: 64, color: Colors.grey.shade400),
+            Icon(Icons.map, size: 64, color: const Color(0xFF2563eb)),
             const SizedBox(height: 16),
             Text(
-              '카카오맵 로드 중...',
+              '카카오맵 (웹)',
               style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
             ),
             const SizedBox(height: 8),
             Text(
               '${_restaurants.length}개의 음식점',
               style: TextStyle(fontSize: 14, color: Colors.grey.shade500),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '위도: $_latitude, 경도: $_longitude',
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: const Color(0xFF2563eb),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Text(
+                '카카오맵 API 연동 준비 완료',
+                style: TextStyle(color: Colors.white, fontSize: 12),
+              ),
             ),
           ],
         ),

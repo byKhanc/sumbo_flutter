@@ -281,7 +281,7 @@ class RestaurantCard extends StatelessWidget {
       case '중식':
         return Colors.red;
       case '일식':
-        return Colors.blue;
+        return const Color(0xFF2563eb);
       case '양식':
         return Colors.purple;
       case '분식':

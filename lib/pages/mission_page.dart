@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../services/treasure_service.dart';
 import '../services/restaurant_service.dart';
-import '../widgets/scroll_buttons.dart';
 import '../widgets/scrollable_page.dart';
 
 class MissionPage extends StatefulWidget {
@@ -87,7 +85,7 @@ class _MissionPageState extends State<MissionPage> {
             'category': '쇼핑',
             'completed': false,
             'icon': Icons.shopping_bag,
-            'color': Colors.blue,
+            'color': const Color(0xFF2563eb),
           },
         ],
       };

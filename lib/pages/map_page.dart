@@ -104,7 +104,7 @@ class _MapPageState extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('보물지도'),
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color(0xFF2563eb),
         foregroundColor: Colors.white,
       ),
       body: Stack(
@@ -139,13 +139,13 @@ class _MapPageState extends State<MapPage> {
               children: [
                 FloatingActionButton(
                   onPressed: _goToCurrentLocation,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: const Color(0xFF2563eb),
                   child: const Icon(Icons.my_location, color: Colors.white),
                 ),
                 const SizedBox(height: 8),
                 FloatingActionButton(
                   onPressed: _showTreasureNotifications,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: const Color(0xFF2563eb),
                   child: const Icon(Icons.notifications, color: Colors.white),
                 ),
               ],
@@ -197,7 +197,7 @@ class _MapPageState extends State<MapPage> {
               left: 0,
               right: 0,
               child: Container(
-                color: Colors.blue,
+                color: const Color(0xFF2563eb),
                 padding: const EdgeInsets.all(16),
                 child: Text(
                   '$_discoveredTreasures개의 보물들이 발견되었습니다.',

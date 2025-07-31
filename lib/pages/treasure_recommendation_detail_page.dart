@@ -53,7 +53,7 @@ class _TreasureRecommendationDetailPageState
     return Scaffold(
       appBar: AppBar(
         title: const Text('보물 추천'),
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color(0xFF2563eb),
         foregroundColor: Colors.white,
       ),
       body: _isLoading

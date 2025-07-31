@@ -23,7 +23,7 @@ class MissionCard extends StatelessWidget {
               width: 48,
               height: 48,
               decoration: BoxDecoration(
-                color: isCompleted ? Colors.green : Colors.blue,
+                color: isCompleted ? Colors.green : const Color(0xFF2563eb),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -111,7 +111,7 @@ class MissionCard extends StatelessWidget {
                   ElevatedButton(
                     onPressed: onStart,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: const Color(0xFF2563eb),
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,

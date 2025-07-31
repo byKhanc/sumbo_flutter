@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../models/treasure.dart';
 import '../services/treasure_service.dart';
 import '../services/restaurant_service.dart';
-import '../widgets/scroll_buttons.dart';
 import '../widgets/scrollable_page.dart';
 
 class TreasureRecommendationPage extends StatefulWidget {
@@ -11,10 +8,12 @@ class TreasureRecommendationPage extends StatefulWidget {
   const TreasureRecommendationPage({super.key, this.fromHome = false});
 
   @override
-  State<TreasureRecommendationPage> createState() => _TreasureRecommendationPageState();
+  State<TreasureRecommendationPage> createState() =>
+      _TreasureRecommendationPageState();
 }
 
-class _TreasureRecommendationPageState extends State<TreasureRecommendationPage> {
+class _TreasureRecommendationPageState
+    extends State<TreasureRecommendationPage> {
   final TreasureService _treasureService = TreasureService();
   final RestaurantService _restaurantService = RestaurantService();
   List<Map<String, dynamic>> _recommendations = [];
@@ -55,13 +54,18 @@ class _TreasureRecommendationPageState extends State<TreasureRecommendationPage>
           'rating': 4.5,
           'reviewCount': 50,
           'type': 'treasure',
-          'icon': _getCategoryIcon(treasure.tags.isNotEmpty ? treasure.tags.first : '기타'),
-          'color': _getCategoryColor(treasure.tags.isNotEmpty ? treasure.tags.first : '기타'),
+          'icon': _getCategoryIcon(
+              treasure.tags.isNotEmpty ? treasure.tags.first : '기타'),
+          'color': _getCategoryColor(
+              treasure.tags.isNotEmpty ? treasure.tags.first : '기타'),
         };
       }).toList();
 
       // 모든 추천 데이터 합치기
-      _recommendations = [...restaurantRecommendations, ...treasureRecommendations];
+      _recommendations = [
+        ...restaurantRecommendations,
+        ...treasureRecommendations
+      ];
 
       setState(() {
         _isLoading = false;
@@ -98,7 +102,7 @@ class _TreasureRecommendationPageState extends State<TreasureRecommendationPage>
       case '시장':
         return Colors.orange;
       case '쇼핑':
-        return Colors.blue;
+        return const Color(0xFF2563eb);
       default:
         return Colors.amber;
     }

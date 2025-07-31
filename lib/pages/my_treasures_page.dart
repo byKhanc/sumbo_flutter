@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../services/treasure_service.dart';
-import '../services/restaurant_service.dart';
-import '../widgets/treasure_card.dart';
 import '../widgets/scrollable_page.dart';
 
 class MyTreasuresPage extends StatefulWidget {
@@ -84,7 +82,7 @@ class _MyTreasuresPageState extends State<MyTreasuresPage> {
       case '시장':
         return Colors.orange;
       case '쇼핑':
-        return Colors.blue;
+        return const Color(0xFF2563eb);
       default:
         return Colors.amber;
     }

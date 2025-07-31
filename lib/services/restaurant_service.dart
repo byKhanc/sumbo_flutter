@@ -1,61 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-
-class Restaurant {
-  final String id;
-  final String name;
-  final String address;
-  final String district;
-  final double latitude;
-  final double longitude;
-  final String category;
-  final List<String> tags;
-  final double rating;
-  final int reviewCount;
-
-  Restaurant({
-    required this.id,
-    required this.name,
-    required this.address,
-    required this.district,
-    required this.latitude,
-    required this.longitude,
-    required this.category,
-    required this.tags,
-    required this.rating,
-    required this.reviewCount,
-  });
-
-  factory Restaurant.fromJson(Map<String, dynamic> json) {
-    return Restaurant(
-      id: json['id'],
-      name: json['name'],
-      address: json['address'],
-      district: json['district'],
-      latitude: json['latitude'].toDouble(),
-      longitude: json['longitude'].toDouble(),
-      category: json['category'],
-      tags: List<String>.from(json['tags']),
-      rating: json['rating'].toDouble(),
-      reviewCount: json['reviewCount'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'address': address,
-      'district': district,
-      'latitude': latitude,
-      'longitude': longitude,
-      'category': category,
-      'tags': tags,
-      'rating': rating,
-      'reviewCount': reviewCount,
-    };
-  }
-}
+import '../models/restaurant.dart';
 
 class RestaurantService {
   static final RestaurantService _instance = RestaurantService._internal();
