@@ -44,6 +44,7 @@ class _SettingsPageState extends State<SettingsPage> {
   bool _notificationsEnabled = true;
   bool _autoBackupEnabled = false;
   Map<String, dynamic>? _backupInfo;
+  Map<String, dynamic>? _currentRadiusInfo; // 현재 반경거리 정보
 
   @override
   void initState() {
@@ -82,6 +83,7 @@ class _SettingsPageState extends State<SettingsPage> {
         _prefsLoaded = true;
       });
       _loadBackupInfo();
+      _loadCurrentRadiusInfo();
       log(
         '[Prefs] Loaded: alarmOn=$_alarmOn, alarmRepeat=$_alarmRepeat, nickname=$_nickname, moveMode=$_moveMode, walkDistance=$_walkDistance, driveDistance=$_driveDistance, alarmCheckInterval=$_alarmCheckInterval, alarmCheckUnit=$_alarmCheckUnit, alarmFilters=$_selectedAlarmFilters',
       );
@@ -98,6 +100,34 @@ class _SettingsPageState extends State<SettingsPage> {
     setState(() {
       _backupInfo = info;
     });
+  }
+
+  Future<void> _loadCurrentRadiusInfo() async {
+    try {
+      // 현재 설정된 반경거리 정보 계산
+      final moveMode = _moveMode;
+      double distance;
+      String mode;
+
+      if (moveMode == 'walk') {
+        distance = _walkDistance;
+        mode = 'walk';
+      } else {
+        distance = _driveDistance;
+        mode = 'drive';
+      }
+
+      setState(() {
+        _currentRadiusInfo = {
+          'mode': mode,
+          'distance': distance,
+          'unit': 'km',
+          'radius_meters': (distance * 1000).round(),
+        };
+      });
+    } catch (e) {
+      print('반경거리 정보 로드 실패: $e');
+    }
   }
 
   Future<void> _toggleNotifications(bool value) async {
@@ -243,6 +273,7 @@ class _SettingsPageState extends State<SettingsPage> {
       _moveMode = value;
     });
     _savePrefs();
+    _loadCurrentRadiusInfo(); // 반경거리 정보 업데이트
   }
 
   void _onWalkDistanceChanged(double value) {
@@ -250,6 +281,7 @@ class _SettingsPageState extends State<SettingsPage> {
       _walkDistance = value;
     });
     _savePrefs();
+    _loadCurrentRadiusInfo(); // 반경거리 정보 업데이트
   }
 
   void _onDriveDistanceChanged(double value) {
@@ -257,6 +289,7 @@ class _SettingsPageState extends State<SettingsPage> {
       _driveDistance = value;
     });
     _savePrefs();
+    _loadCurrentRadiusInfo(); // 반경거리 정보 업데이트
   }
 
   void _onAlarmCheckIntervalChanged(int value) {
@@ -423,6 +456,12 @@ class _SettingsPageState extends State<SettingsPage> {
                   '이동방식',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
+                const SizedBox(height: 8),
+                const Text(
+                  '선택한 이동방식에 따라 맛집 검색 반경이 자동으로 조정됩니다.',
+                  style: TextStyle(fontSize: 14, color: Colors.grey),
+                ),
+                const SizedBox(height: 12),
                 Row(
                   children: [
                     Radio<String>(
@@ -449,9 +488,32 @@ class _SettingsPageState extends State<SettingsPage> {
                     label: '${_walkDistance.round()}km',
                     onChanged: _onWalkDistanceChanged,
                   ),
-                  Text(
-                    '${_walkDistance.round()}km',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '반경거리: ${_walkDistance.round()}km',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF2563eb).withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          '${(_walkDistance * 1000).round()}m',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF2563eb),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
                 if (_moveMode == 'drive') ...[
@@ -463,9 +525,32 @@ class _SettingsPageState extends State<SettingsPage> {
                     label: '${_driveDistance.round()}km',
                     onChanged: _onDriveDistanceChanged,
                   ),
-                  Text(
-                    '${_driveDistance.round()}km',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '반경거리: ${_driveDistance.round()}km',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF2563eb).withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          '${(_driveDistance * 1000).round()}m',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF2563eb),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ],

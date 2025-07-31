@@ -65,7 +65,7 @@ class _KakaoMapWidgetState extends State<KakaoMapWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.map, size: 64, color: const Color(0xFF2563eb)),
+            const Icon(Icons.map, size: 64, color: Color(0xFF2563eb)),
             const SizedBox(height: 16),
             Text(
               '카카오맵 (웹)',

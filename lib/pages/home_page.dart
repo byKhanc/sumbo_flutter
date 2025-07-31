@@ -3,7 +3,6 @@ import 'map_page.dart';
 import 'mission_page.dart';
 import 'my_treasures_page.dart';
 import 'treasure_recommendation_page.dart';
-import 'platform_map_page.dart';
 
 import '../widgets/scrollable_page.dart';
 
@@ -17,16 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // 맵 페이지로 이동하는 함수 추가
-  void _navigateToPlatformMap(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const PlatformMapPage(),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return ScrollablePage(
@@ -55,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                 buttonText: '지도 보기 →',
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const PlatformMapPage()),
+                  MaterialPageRoute(builder: (_) => const MapPage()),
                 ),
               ),
               _HomeCard(
@@ -92,40 +81,6 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(
                     builder: (_) =>
                         const TreasureRecommendationPage(fromHome: true),
-                  ),
-                ),
-              ),
-              Card(
-                child: InkWell(
-                  onTap: () => _navigateToPlatformMap(context),
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                                                         Icon(Icons.map, color: const Color(0xFF2563eb)),
-                            const SizedBox(width: 8),
-                            const Text(
-                              '플랫폼별 맵',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          '웹: 카카오맵, 에뮬레이터: 구글맵, 실제 기기: 카카오맵',
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ),
