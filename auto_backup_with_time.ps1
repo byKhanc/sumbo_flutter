@@ -1,4 +1,9 @@
 # Cursor 종료 시 자동 백업 스크립트 (시간 정보 포함)
+
+# UTF-8 인코딩 설정
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "Cursor 종료 시 자동 백업 시작" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
@@ -12,35 +17,65 @@ $currentTime = ""
 
 Write-Host "time.is에서 정확한 시간 가져오기 시도 중..." -ForegroundColor Yellow
 
+# 방법 1: WorldTimeAPI 시도 (더 안정적)
 try {
-    # time.is에서 시간 정보 가져오기
-    $response = Invoke-WebRequest -Uri "https://time.is/ko/KST" -UseBasicParsing -TimeoutSec 10
+    $response = Invoke-WebRequest -Uri "https://worldtimeapi.org/api/timezone/Asia/Seoul" -UseBasicParsing -TimeoutSec 10
     if ($response.StatusCode -eq 200) {
-        # HTML에서 시간 정보 추출 (여러 패턴 시도)
-        $patterns = @(
-            '(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})',
-            '(\d{2}:\d{2}:\d{2})',
-            '(\d{4}년 \d{1,2}월 \d{1,2}일 \d{2}:\d{2}:\d{2})',
-            '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})'
-        )
-        
-        foreach ($pattern in $patterns) {
-            if ($response.Content -match $pattern) {
-                $currentTime = $matches[1] + " KST"
-                $hasTime = $true
-                Write-Host "time.is에서 시간 정보 가져오기 성공: $currentTime" -ForegroundColor Green
-                break
-            }
-        }
-        
-        if (-not $hasTime) {
-            Write-Host "time.is에서 시간 패턴을 찾을 수 없음" -ForegroundColor Yellow
-        }
-    } else {
-        Write-Host "time.is 접근 실패: $($response.StatusCode)" -ForegroundColor Yellow
+        $timeData = $response.Content | ConvertFrom-Json
+        $currentTime = $timeData.datetime + " KST"
+        $hasTime = $true
+        Write-Host "WorldTimeAPI에서 시간 정보 가져오기 성공: $currentTime" -ForegroundColor Green
     }
 } catch {
-    Write-Host "time.is에서 시간 정보 가져오기 실패: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "WorldTimeAPI에서 시간 정보 가져오기 실패" -ForegroundColor Yellow
+}
+
+# 방법 2: time.is에서 시간 추출 (WorldTimeAPI 실패 시)
+if (-not $hasTime) {
+    try {
+        $response = Invoke-WebRequest -Uri "https://time.is/ko/KST" -UseBasicParsing -TimeoutSec 10
+        if ($response.StatusCode -eq 200) {
+            # 더 강력한 패턴으로 시간 추출
+            $patterns = @(
+                '(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})',
+                '(\d{2}:\d{2}:\d{2})',
+                '(\d{4}년 \d{1,2}월 \d{1,2}일 \d{2}:\d{2}:\d{2})',
+                '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})',
+                '(\d{4}-\d{2}-\d{2})',
+                '(\d{2}:\d{2})'
+            )
+            
+            foreach ($pattern in $patterns) {
+                if ($response.Content -match $pattern) {
+                    $currentTime = $matches[1] + " KST"
+                    $hasTime = $true
+                    Write-Host "time.is에서 시간 정보 가져오기 성공: $currentTime" -ForegroundColor Green
+                    break
+                }
+            }
+            
+            if (-not $hasTime) {
+                Write-Host "time.is에서 시간 패턴을 찾을 수 없음" -ForegroundColor Yellow
+            }
+        } else {
+            Write-Host "time.is 접근 실패: $($response.StatusCode)" -ForegroundColor Yellow
+        }
+    } catch {
+        Write-Host "time.is에서 시간 정보 가져오기 실패: $($_.Exception.Message)" -ForegroundColor Red
+    }
+}
+
+# 방법 3: 로컬 시간 사용 (마지막 수단)
+if (-not $hasTime) {
+    try {
+        $utcTime = [DateTime]::UtcNow
+        $kstTime = $utcTime.AddHours(9)  # UTC+9 (KST)
+        $currentTime = $kstTime.ToString("yyyy-MM-dd HH:mm:ss") + " KST (로컬)"
+        $hasTime = $true
+        Write-Host "로컬 시간 사용: $currentTime" -ForegroundColor Yellow
+    } catch {
+        Write-Host "로컬 시간 변환 실패" -ForegroundColor Red
+    }
 }
 
 # 커밋 메시지 생성
