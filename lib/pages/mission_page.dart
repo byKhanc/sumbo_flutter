@@ -143,13 +143,13 @@ class _MissionPageState extends State<MissionPage> with TickerProviderStateMixin
 
   int _getTotalPoints() {
     int total = 0;
-    _missions.values.forEach((missions) {
-      missions.forEach((mission) {
+    for (var missions in _missions.values) {
+      for (var mission in missions) {
         if (mission['completed'] == true) {
           total += mission['points'] as int;
         }
-      });
-    });
+      }
+    }
     return total;
   }
 

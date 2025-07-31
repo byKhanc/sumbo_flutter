@@ -515,7 +515,7 @@ class _TreasureCardState extends State<_TreasureCard>
                           const Spacer(),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 size: 14,
                                 color: Colors.amber,

@@ -533,7 +533,7 @@ class _RecommendationCardState extends State<_RecommendationCard>
                           const SizedBox(height: 8),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 size: 16,
                                 color: Colors.amber,
@@ -679,7 +679,7 @@ class _RecommendationDetailPage extends StatelessWidget {
             // 평점
             Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.star,
                   color: Colors.amber,
                   size: 20,

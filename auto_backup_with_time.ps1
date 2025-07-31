@@ -1,8 +1,16 @@
 # Cursor 종료 시 자동 백업 스크립트 (시간 정보 포함)
 
-# UTF-8 인코딩 설정
+# UTF-8 인코딩 설정 강화
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $OutputEncoding = [System.Text.Encoding]::UTF8
+$PSDefaultParameterValues['*:Encoding'] = 'utf8'
+
+# 콘솔 코드페이지를 UTF-8로 설정
+try {
+    chcp 65001 | Out-Null
+} catch {
+    Write-Host "코드페이지 설정 실패, 계속 진행..." -ForegroundColor Yellow
+}
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "Cursor 종료 시 자동 백업 시작" -ForegroundColor Cyan
@@ -78,21 +86,21 @@ if (-not $hasTime) {
     }
 }
 
-# 커밋 메시지 생성
+# 커밋 메시지 생성 (영어로 작성하여 한글 깨짐 방지)
 if ($hasTime) {
     $commitMessage = @"
 
-작업 시간: $kstUrl
-현재 시간: $currentTime
+Work Time: $kstUrl
+Current Time: $currentTime
 
-Cursor 자동 백업 - $currentTime
+Cursor Auto Backup - $currentTime
 "@
 } else {
     $commitMessage = @"
 
-작업 시간: $kstUrl
+Work Time: $kstUrl
 
-Cursor 자동 백업
+Cursor Auto Backup
 "@
 }
 
