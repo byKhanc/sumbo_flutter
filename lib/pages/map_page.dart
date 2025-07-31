@@ -151,7 +151,7 @@ class _MapPageState extends State<MapPage> {
               ],
             ),
           ),
-          // 보물 알림 팝업창
+          // 보물 알림 팝업창!
           if (_showNotificationPopup)
             Container(
               color: Colors.black54,
